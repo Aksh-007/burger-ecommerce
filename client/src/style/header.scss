@@ -1,0 +1,67 @@
+@import "colors";
+
+nav {
+  height: 4vh;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.229);
+   background-color: #fff;
+   //added extra 
+    position: sticky;
+   top: 0;
+    z-index: 1000;
+  //  -webkit-backdrop-filter: blur(20px);
+  //  backdrop-filter: blur(20px);
+
+   >div{
+      display: flex;
+      align-items: center;
+
+      >svg{
+        color: $red;
+        font-size: 3rem;
+      }
+      >p{
+        font-size: 2rem;
+      }
+     //  link tag is a anchor tag
+      > a{
+        //  y-axis = 0 and x-axis = 2rem 
+        margin: 0 2rem;
+        color: $dark;
+        transition: color 0.3;
+        font-size: 1.75rem;
+
+        &:hover{
+            color: $lightDark;
+        }
+
+        //means icons
+        >svg{
+            columns: $red;
+            transition: inherit;
+            font-size: 2rem;
+            
+        &:hover{
+            color: $lightDark;
+        }
+        }
+      }
+   }
+}
+
+
+// Adding media query
+@media screen and (max-width:600px){
+    nav{
+        padding: 1rem;
+        -webkit-backdrop-filter: blur(20px);
+         backdrop-filter: blur(20px);
+        >div > a{
+            margin: 0 0.5rem;
+            font-size: 1.1rem;
+        }
+    }
+}

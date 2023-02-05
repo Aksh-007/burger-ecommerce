@@ -1,0 +1,72 @@
+@import "colors";
+
+#menu {
+  width: 92%;
+  height: 100vh;
+  background-color: #fff;
+  padding: 4rem;
+  overflow-x: hidden;
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+    padding-bottom: 4rem;
+  }
+  > div {
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
+.menuCard {
+  background-color: #fff;
+  width: 30%;
+  height: 70vh;
+  border-radius: 38px;
+  background: linear-gradient(145deg, #cacaca, #f0f0f0);
+  box-shadow: 15px 15px 30px #aaaaaa, -15px -15px 30px #ffffff;
+
+  > div {
+    border-radius: 20px 20px 0 0;
+    background-color: $red;
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    color: #fff;
+    height: 2vh;
+    font-size: 2rem;
+  }
+  main {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > img {
+      height: 32vh;
+      width: 100%;
+      object-fit: contain;
+    }
+    > h5 {
+      font-size: 2rem;
+    }
+    > p {
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-size: 2rem;
+      padding: 0.8rem;
+    }
+    > button {
+      background-color: $red;
+      color: #fff;
+      font-size: 1.5rem;
+      border: none;
+      padding: 1rem 2rem;
+      width: 100%;
+      border-radius: 10px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $redDark;
+      }
+    }
+  }
+}
