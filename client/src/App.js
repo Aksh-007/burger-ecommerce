@@ -7,6 +7,8 @@ import Footer from "./components/layout/Footer";
 import Contact from "./components/contact/Contact";
 import Cart from "./components/cart/Cart";
 import Checkout from "./components/cart/Checkout.jsx";
+import ConfirmOrder from "./components/cart/ConfirmOrder.jsx";
+import ErrorHandler from "./components/cart/ErrorHandler.jsx";
 import "../src/style/app.scss"
 import "../src/style/header.scss"
 import "../src/style/home.scss"
@@ -16,6 +18,7 @@ import "../src/style/footer.scss"
 import "../src/style/contact.scss"
 import "../src/style/cart.scss"
 import "../src/style/checkout.scss"
+import "../src/style/confirmOrder.scss"
 
 function App() {
   return (
@@ -28,6 +31,8 @@ function App() {
           <Route path='/about' element={<About/>}/>
           <Route path='/cart' element={<Cart/>}/>
           <Route path='/checkout' element={<Checkout/>}/>
+          <Route path='/confirmorder' element={<ConfirmOrder/>}/>
+          <Route path='*' element={<ErrorHandler/>}/>
         </Routes>
         <Footer/>
      </BrowserRouter>
