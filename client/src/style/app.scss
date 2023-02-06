@@ -7,7 +7,9 @@
     padding: 0%;
     font-family: "Itim", sans-serif;
 }
-
+body{
+    overflow-x: hidden;
+}
 //making whole site anchor tag text decoration to none
 a{
     text-decoration: none;
