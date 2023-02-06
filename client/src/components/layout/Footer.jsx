@@ -9,19 +9,22 @@ const Footer = () => {
         <p>"Savor the flavor in every bite."</p>
         <br />
         <em>We give attention to genuine feedback</em>
-        <strong>All right reserved for Nagpur Brgerwala</strong>
+        <strong>All right reserved for NAGPUR BURGERWALA</strong>
       </div>
       <aside>
-        <h4>Follow Us</h4>
-        <a href="https://www.instagram.com/akshaybarapatre_aksh">
+        <h4>Follow Us :</h4>
+        <div className="icons">
+        <a href="https://www.instagram.com/akshaybarapatre_aksh"   target="_blank" rel="noreferrer">
             <AiFillInstagram/>
         </a>
-        <a href="https://www.linkedin.com/in/akshay-barapatre-19a656100/">
+        <a href="https://www.linkedin.com/in/akshay-barapatre-19a656100/"  target="_blank" rel="noreferrer">
             <AiFillLinkedin/>
         </a>
-        <a href="https://github.com/Aksh-007">
+        <a href="https://github.com/Aksh-007" target="_blank" rel="noreferrer">
             <AiFillGithub/>
         </a>
+        </div>
+       
       </aside>
     </footer>
   );

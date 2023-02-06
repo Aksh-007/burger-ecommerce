@@ -22,6 +22,7 @@ const Founder = () => {
    <section className="founder">
     <motion.div
     {...options}
+    transition={{delay:0.6}}
     >
         <img src={my} alt="Myimage"/>
         <h1>{name}</h1>
