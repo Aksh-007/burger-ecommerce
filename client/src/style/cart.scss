@@ -13,6 +13,7 @@
 
     > article {
       padding: 2rem;
+      height: 30vh;
       background-color: rgb(246, 246, 246);
       > div {
         display: flex;
@@ -27,6 +28,9 @@
         text-align: center;
         margin-top: 2rem;
         float: right;
+        &:hover {
+            background-color: $redDark;
+          }
       }
     }
   }
@@ -83,10 +87,17 @@
 @media screen and (max-width: 600px) {
   .cart {
     height: 90vh;
-    > main > article > a {
-      float: none;
-      display: block;
-      width: 80%;
+    > main > article {
+        // height: 30%;
+      > a {
+        float: none;
+        display: block;
+        width: 90%;
+        margin: auto;
+        &:hover {
+            background-color: $redDark;
+          }
+      }
     }
   }
 }
