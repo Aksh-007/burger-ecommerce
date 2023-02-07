@@ -1,0 +1,64 @@
+@import "colors";
+
+.dashboard {
+  height: 100vh;
+  width: 100%;
+  background-color: $pink;
+  > main {
+    max-width: 900px;
+    height: 100%;
+    margin: auto;
+    background-color: #fff;
+    > article {
+      padding: 1.5rem;
+      background-color: $dark;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      // color: #fff;
+      div {
+        background-color: #fff;
+        border-radius: 100%;
+        text-align: center;
+        height: 8vh;
+        width: 7vw;
+        > h3 {
+          font: 800 2rem;
+        }
+        > p {
+          font: 200 1.5rem;
+        }
+      }
+    }
+    > section {
+      display: flex;
+      justify-content: space-between;
+      padding: 6rem;
+      > div {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        justify-content: center;
+        align-items: center;
+        >a{
+            white-space: nowrap;
+            background-color: $dark;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 5px;
+            width: 50%;
+            margin: 1rem;
+            &:hover{
+                background-color: $redDark;
+            }
+        }
+      }
+      >aside{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}
