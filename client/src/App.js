@@ -10,6 +10,7 @@ import Checkout from "./components/cart/Checkout.jsx";
 import ConfirmOrder from "./components/cart/ConfirmOrder.jsx";
 import ErrorHandler from "./components/cart/ErrorHandler.jsx";
 import PaymentSucceed from "./components/cart/PaymentSucceed.jsx";
+import Login from "./login/Login.jsx";
 import "../src/style/app.scss"
 import "../src/style/header.scss"
 import "../src/style/home.scss"
@@ -21,6 +22,7 @@ import "../src/style/cart.scss"
 import "../src/style/checkout.scss"
 import "../src/style/confirmOrder.scss"
 import "../src/style/paymentSucceed.scss"
+import "../src/style/login.scss"
 
 function App() {
   return (
@@ -35,6 +37,7 @@ function App() {
           <Route path='/checkout' element={<Checkout/>}/>
           <Route path='/confirmorder' element={<ConfirmOrder/>}/>
           <Route path='/paymentsucceed' element={<PaymentSucceed/>}/>
+          <Route path='/login' element={<Login/>}/>
           <Route path='*' element={<ErrorHandler/>}/>
         </Routes>
         <Footer/>
