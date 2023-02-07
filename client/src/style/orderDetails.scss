@@ -10,15 +10,17 @@
     margin: auto;
     overflow-x: auto;
     padding: rem;
-    text-align: center;
+
     > h1 {
       text-transform: uppercase;
       margin: 3rem;
       font-weight: 100;
       font-size: 3rem;
+      text-align: center;
     }
     > div {
       margin: 2rem 0;
+      text-align: center;
       > h1 {
         font-size: 1.8rem;
         text-transform: uppercase;
@@ -35,24 +37,46 @@
         }
       }
     }
+
+    > article {
+      > h1 {
+        margin: 2rem 0;
+        font-size: 1.8rem;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        padding: 0 2rem;
+      }
+      > div {
+        background-color: rgb(246, 246, 246);
+        margin: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem;
+        border-radius: 5px;
+        > h4 {
+          font-weight: 200;
+        }
+      }
+    }
   }
 }
+
 @media screen and (max-width: 600px) {
   .orderDetails {
-    >main {
+    > main {
       background-color: $pink;
-      h1{
+      h1 {
         font-size: 2rem;
-       }
-       div{
-        h1{
+      }
+      div {
+        h1 {
           font-size: 1.5rem;
-        } 
-        >p{
+        }
+        > p {
           font-size: 1.1rem;
         }
-       }
+      }
     }
-  
   }
 }
