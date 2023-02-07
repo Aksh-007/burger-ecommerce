@@ -12,6 +12,8 @@ import ErrorHandler from "./components/errorPages/ErrorHandler.jsx";
 import PaymentSucceed from "./components/cart/PaymentSucceed.jsx";
 import Login from "./login/Login.jsx";
 import Profile from "./components/profile/Profile.jsx";
+import MyOrders from "./components/order/MyOrders";
+import OrderDetails from "./components/order/OrderDetails";
 import "../src/style/app.scss"
 import "../src/style/header.scss"
 import "../src/style/home.scss"
@@ -25,6 +27,8 @@ import "../src/style/confirmOrder.scss"
 import "../src/style/paymentSucceed.scss"
 import "../src/style/login.scss"
 import "../src/style/profile.scss"
+import "../src/style/table.scss"
+import "../src/style/orderDetails.scss"
 
 function App() {
   return (
@@ -41,6 +45,8 @@ function App() {
           <Route path='/paymentsucceed' element={<PaymentSucceed/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/me' element={<Profile/>}/>
+          <Route path='/myorders' element={<MyOrders/>}/>
+          <Route path='/orders/:id' element={<OrderDetails/>}/>
           <Route path='*' element={<ErrorHandler/>}/>
         </Routes>
         <Footer/>

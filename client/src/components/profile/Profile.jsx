@@ -27,7 +27,7 @@ const Profile = () => {
         </motion.h5>
 
         <motion.div {...options} transition={{ delay: 0.5 }}>
-          <Link to="/admin/dashboard">Dashboard <MdDashboard size={22} style={{padding:'0px 0 0 10px'}}/></Link>
+          <Link to="/admin/dashboard">Dashboard <MdDashboard size={22}/></Link>
         </motion.div>
         <motion.div
           initial={{
@@ -39,7 +39,7 @@ const Profile = () => {
             opacity: 1,
           }}
         >
-          <Link to="/myorders">Orders<BsCartDashFill size={22} style={{padding:'0px 0 0 10px'}}/></Link>
+          <Link to="/myorders">Orders<BsCartDashFill size={22}/></Link>
         </motion.div>
 
         <motion.button
@@ -55,7 +55,7 @@ const Profile = () => {
             delay:0.3
         }}
         >
-            LogOut <TbLogout size={22} style={{padding:'0px 0 0 10px'}}/>
+            LogOut <TbLogout size={22}/>
         </motion.button>
       </main>
     </section>
