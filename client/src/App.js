@@ -34,6 +34,9 @@ import "../src/style/shared-scss/table.scss"
 import "../src/style/orderDetails.scss"
 import "../src/style/dashboard.scss"
 import "../src/style/about.scss"
+import "../src/style/errorPage.scss"
+import "../src/style/shared-scss/loader.scss"
+
 
 function App() {
   return (

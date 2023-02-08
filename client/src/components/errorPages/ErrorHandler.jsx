@@ -1,12 +1,21 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import {MdError} from 'react-icons/md';
 
 const ErrorHandler = () => {
   return (
-    <div style={{display:'flex', justifyContent:'center', alignItems:'center', height:'60vh'}}>
-      <h1>OOPss No such page exist !!!!</h1>
-      <Link to="/">Home</Link>
-    </div>
+   <section className="notFound">
+    <main>
+      <div>
+        <MdError size={55}/>
+        <h1>404</h1>
+      </div>
+
+      <p>Page Not Found</p>
+      <p>Click Below to go to Home page</p>
+      <Link to='/'>Go To Home</Link>
+    </main>
+   </section>
   )
 }
 
