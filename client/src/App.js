@@ -2,7 +2,7 @@ import React from "react";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Header from "./components/layout/Header";
 import Home from "./components/home/Home";
-import About from "./components/About";
+import About from "./components/about/About";
 import Footer from "./components/layout/Footer";
 import Contact from "./components/contact/Contact";
 import Cart from "./components/cart/Cart";
@@ -33,6 +33,7 @@ import "../src/style/profile.scss"
 import "../src/style/shared-scss/table.scss"
 import "../src/style/orderDetails.scss"
 import "../src/style/dashboard.scss"
+import "../src/style/about.scss"
 
 function App() {
   return (
