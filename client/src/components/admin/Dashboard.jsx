@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Box from "./Box";
-import "../../style/box.css";
+import "../../style/box.scss";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
@@ -24,7 +24,7 @@ const Dashboard = () => {
     ],
   };
   return (
-    <sectio className="dashboard">
+    <section className="dashboard">
       <main>
         <article>
           <Box title="Users" value={213} />
@@ -43,7 +43,7 @@ const Dashboard = () => {
           </aside>
         </section>
       </main>
-    </sectio>
+    </section>
   );
 };
 

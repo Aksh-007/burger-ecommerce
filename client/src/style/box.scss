@@ -1,0 +1,19 @@
+
+.box{
+  font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+@media screen and (max-width:600px) {
+    .box{
+        h3{
+            font-size: 1.2rem;
+        }
+        p{
+            font: 200;
+        }
+    }
+}
