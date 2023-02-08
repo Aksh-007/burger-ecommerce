@@ -15,6 +15,8 @@ import Profile from "./components/profile/Profile.jsx";
 import MyOrders from "./components/order/MyOrders";
 import OrderDetails from "./components/order/OrderDetails";
 import Dashboard from "./components/admin/Dashboard";
+import Users from "./components/admin/Users.jsx";
+import Orders from "./components/admin/Orders.jsx";
 import "../src/style/app.scss"
 import "../src/style/header.scss"
 import "../src/style/home.scss"
@@ -28,7 +30,7 @@ import "../src/style/confirmOrder.scss"
 import "../src/style/paymentSucceed.scss"
 import "../src/style/login.scss"
 import "../src/style/profile.scss"
-import "../src/style/table.scss"
+import "../src/style/shared-scss/table.scss"
 import "../src/style/orderDetails.scss"
 import "../src/style/dashboard.scss"
 
@@ -50,6 +52,8 @@ function App() {
           <Route path='/myorders' element={<MyOrders/>}/>
           <Route path='/order/:id' element={<OrderDetails/>}/>
           <Route path='/admin/dashboard' element={<Dashboard/>}/>
+          <Route path='/admin/users' element={<Users/>}/>
+          <Route path='/admin/orders' element={<Orders/>}/>
           <Route path='*' element={<ErrorHandler/>}/>
         </Routes>
         <Footer/>
