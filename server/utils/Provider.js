@@ -5,11 +5,14 @@ import userModel from "../models/user.schema.js";
 
 export const connectPassport = () => {
 
-    passport.use(new GoogleStratergy({
+    passport.use(
+        new GoogleStratergy(
+        {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL: process.env.GOOGLE_CALLBACK_URL,
-    }, async function (accessToken, refreshToken, profile, done) {
+    }, 
+    async function (accessToken, refreshToken, profile, done) {
 
         //databse comes here when user login
         // once the user login it will save in database and 
