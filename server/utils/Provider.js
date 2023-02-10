@@ -16,17 +16,18 @@ export const connectPassport = () => {
         //retrievr information from database  again if the user login
 
         //in this step we are finding user id in databse so that we can do furthure operation
+
         const user = await userModel.findOne({
             googleId: profile.id,
         });
-
+        
         // here we are checking about user present in database or not 
         if (!user) {
             // if user not present in database then created a new user and save it in database 
             const newUser = await userModel.create({
                 googleId: profile.id,
-                name: profile.name,
-                photo: profile.photos[0].value
+                name: profile.displayName,
+                photo: profile.photos[0].value,
             });
             //
             return done(null, newUser);
@@ -44,4 +45,4 @@ export const connectPassport = () => {
         const user = await userModel.findById(id);
         done(null, user);
     });
-}
+};

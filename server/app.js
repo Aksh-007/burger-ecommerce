@@ -13,13 +13,15 @@ import userRoutes from "./routes/userRoutes.js"
 
 // importing connectPassport to connect to googleauth 
 import { connectPassport } from "./utils/Provider.js";
-connectPassport();
+
 
 //importing session 
 import session from 'express-session';
+import passport from 'passport';
 
 const app = express();
 
+app.use(express.json());
 //using middlewares
 app.use(
     session({
@@ -28,6 +30,12 @@ app.use(
         saveUninitialized: false,
     })
 );
+
+app.use(passport.authenticate("session"));
+app.use(passport.initialize());
+app.use(passport.session());
+
+connectPassport();
 
 //using routes as middleware
 app.use("/api/v1", userRoutes);

@@ -2,8 +2,12 @@ import mongoose from "mongoose";
 import authRoles from "../utils/authRoles.js";
 
 export const userSchema = new mongoose.Schema({
-    name: String,
-    photo: String,
+    name: {
+        type: String
+    },
+    photo: {
+        type: String
+    },
     googleId: {
         type: String,
         required: true,
@@ -13,11 +17,9 @@ export const userSchema = new mongoose.Schema({
         type: "String",
         enum: Object.values(authRoles),
         default: authRoles.USER,
-    }
+    },
 
-}, {
-    timestamps: true,
-}
+}, { timestamps: true }
 );
 
 export default mongoose.model("User", userSchema);
