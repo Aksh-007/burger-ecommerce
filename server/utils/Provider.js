@@ -1,14 +1,14 @@
 import { Strategy as GoogleStratergy } from "passport-google-oauth20";
 import passport from "passport";
-import userModel from "../models/user.schema.js"
+import userModel from "../models/user.schema.js";
 
 
 export const connectPassport = () => {
 
     passport.use(new GoogleStratergy({
-        clientID: "akshay",
-        clientSecret: "akshay",
-        callbackURL: 'https://www.example.com/oauth2/redirect/google',
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: process.env.GOOGLE_CALLBACK_URL,
     }, async function (accessToken, refreshToken, profile, done) {
 
         //databse comes here when user login

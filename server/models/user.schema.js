@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import authRoles from "../utils/authRoles";
+import authRoles from "../utils/authRoles.js";
 
 export const userSchema = new mongoose.Schema({
     name: String,
