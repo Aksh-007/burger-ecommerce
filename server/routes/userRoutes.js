@@ -24,7 +24,7 @@ import { myProfile } from "../controllers/user.controller.js";
     //we have to authenticate it 
     passport.authenticate("google"),
     (req, res, next) =>{
-        res.send("logged in ")
+        res.send("logged in ")  
     });
     
     router.get('/me', myProfile)
