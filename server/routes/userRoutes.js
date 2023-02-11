@@ -30,7 +30,7 @@ import { myProfile, logout } from "../controllers/user.controller.js";
     // this routes gives you information of login user
     router.get('/me', myProfile);
 
-    router.get('/logout', logout )
+    router.get('/logout', logout );
 
 
 
