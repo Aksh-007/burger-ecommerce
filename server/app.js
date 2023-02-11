@@ -12,7 +12,7 @@ import session from 'express-session';
 import passport from 'passport';
 import cookieParser from 'cookie-parser';
 //importing error middlewar
-// import { errorMiddleware } from './middleware/errorMiddleware.js';
+import { errorMiddleware } from './middleware/errorMiddleware.js';
 
 // configuring the dotenv environment here 
 dotenv.config();
@@ -49,7 +49,7 @@ app.use('/api/v1', userRoutes);
 app.use(express.json());
 
 //using error middleware
-// app.use(errorMiddleware);
+app.use(errorMiddleware);
 
 
 
