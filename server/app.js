@@ -10,6 +10,7 @@ import connectPassport from "./utils/authProvider.js"
 // thid for session
 import session from 'express-session';
 import passport from 'passport';
+import cookieParser from 'cookie-parser';
 
 // configuring the dotenv environment here 
 dotenv.config();
@@ -34,7 +35,8 @@ app.use(passport.authenticate("session"));
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+//using cookie parser
+app.use(cookieParser());
 
 
 
