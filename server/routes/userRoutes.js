@@ -1,5 +1,6 @@
 import express from "express";
 import passport from "passport";
+import { myProfile } from "../controllers/user.controller.js";
 
   const router = express.Router();
 
@@ -18,12 +19,15 @@ import passport from "passport";
     //     })
     // )
     
-    //temproparly setting it
-    router.get("/login", (req, res, next) =>{
+    //temproparly setting it but we have to authenticate it 
+    router.get("/login", 
+    //we have to authenticate it 
+    passport.authenticate("google"),
+    (req, res, next) =>{
         res.send("logged in ")
     });
     
-    router.get('/me')
+    router.get('/me', myProfile)
 
 
     export default router;
