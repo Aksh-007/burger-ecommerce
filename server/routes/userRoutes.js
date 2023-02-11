@@ -1,6 +1,7 @@
 import express from "express";
 import passport from "passport";
 import { myProfile, logout } from "../controllers/user.controller.js";
+import { isAuthenticated } from "../middleware/authMiddleware.js";
 
   const router = express.Router();
 
@@ -28,7 +29,7 @@ import { myProfile, logout } from "../controllers/user.controller.js";
     });
     
     // this routes gives you information of login user
-    router.get('/me', myProfile);
+    router.get('/me',isAuthenticated, myProfile);
 
     router.get('/logout', logout );
 
