@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { urlencoded } from 'express';
 // this file is for environment variable
 import dotenv from 'dotenv';
 //importing database file and executing it
@@ -39,14 +39,16 @@ app.use(passport.session());
 
 //using cookie parser
 app.use(cookieParser());
+//using express middlewares to accept json data in req.body/params
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 
 
 
 
 app.use('/api/v1', userRoutes);
 
-//using middlewares
-app.use(express.json());
+
 
 //using error middleware
 app.use(errorMiddleware);

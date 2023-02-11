@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import orderStatus from "../utils/ordersStatus";
 //created enum for payment method 
-import paymentMethod from "../utils/paymentModes";
+import paymentModes from "../utils/paymentModes";
 
 
 export const orderModel = new mongoose.Schema({
@@ -75,8 +75,8 @@ export const orderModel = new mongoose.Schema({
     },
     paymentMethod:{
         type:String,
-        enum:Object.values(paymentMethod),
-        default:paymentMethod.COD,
+        enum:Object.values(paymentModes),
+        default:paymentModes.COD,
     },
     paymentInfo:{
         type:mongoose.Schema.ObjectId,

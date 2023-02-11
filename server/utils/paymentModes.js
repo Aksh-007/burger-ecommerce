@@ -1,8 +1,8 @@
 
 // payment modes
-const paymentMethod= {
+const paymentModes= {
     COD :"COD",
     Online :"online",
 }
 
-export default paymentMethod;
+export default paymentModes;
