@@ -1,44 +1,51 @@
 import express from 'express';
-
 // this file is for environment variable
 import dotenv from 'dotenv';
-dotenv.config();
-
 //importing database file and executing it
 import { dbConnection } from './config/dbConnection.js';
-dbConnection();
-
 //importing routes 
-import userRoutes from "./routes/userRoutes.js"
-
-// importing connectPassport to connect to googleauth 
-import { connectPassport } from "./utils/Provider.js";
-
-
-//importing session 
+import userRoutes from './routes/userRoutes.js';
+//importing passport
+import connectPassport from "./utils/authProvider.js"
+// thid for session
 import session from 'express-session';
 import passport from 'passport';
 
+// configuring the dotenv environment here 
+dotenv.config();
+// calling dbconnection
+dbConnection();
+// calling passport function
+connectPassport();
+
+
+
 const app = express();
 
-app.use(express.json());
-//using middlewares
-app.use(
-    session({
-        secret: process.env.SESSION_SECRET,
-        resave: false,
-        saveUninitialized: false,
-    })
-);
+//using miidleware as session
+app.use(session({
+    secret:process.env.SESSION_SECRET,
+    resave:false,
+    saveUninitialized:false,
+}));
 
+//make sure you will call it after session
 app.use(passport.authenticate("session"));
 app.use(passport.initialize());
 app.use(passport.session());
 
-connectPassport();
 
-//using routes as middleware
-app.use("/api/v1", userRoutes);
+
+
+
+
+app.use('/api/v1', userRoutes);
+
+app.use(express.json());
+//using middlewares
+
+
+
 
 
 // basic route to test
