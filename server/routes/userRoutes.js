@@ -1,6 +1,6 @@
 import express from "express";
 import passport from "passport";
-import { myProfile } from "../controllers/user.controller.js";
+import { myProfile, logout } from "../controllers/user.controller.js";
 
   const router = express.Router();
 
@@ -27,7 +27,12 @@ import { myProfile } from "../controllers/user.controller.js";
         res.send("logged in ")  
     });
     
-    router.get('/me', myProfile)
+    // this routes gives you information of login user
+    router.get('/me', myProfile);
+
+    router.get('/logout', logout )
+
+
 
 
     export default router;
