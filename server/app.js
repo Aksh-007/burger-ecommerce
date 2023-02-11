@@ -11,6 +11,8 @@ import connectPassport from "./utils/authProvider.js"
 import session from 'express-session';
 import passport from 'passport';
 import cookieParser from 'cookie-parser';
+//importing error middlewar
+// import { errorMiddleware } from './middleware/errorMiddleware.js';
 
 // configuring the dotenv environment here 
 dotenv.config();
@@ -43,9 +45,11 @@ app.use(cookieParser());
 
 app.use('/api/v1', userRoutes);
 
-app.use(express.json());
 //using middlewares
+app.use(express.json());
 
+//using error middleware
+// app.use(errorMiddleware);
 
 
 
