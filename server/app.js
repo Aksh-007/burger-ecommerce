@@ -1,18 +1,14 @@
-import express, { urlencoded } from 'express';
-// this file is for environment variable
+import express from "express";
 import dotenv from 'dotenv';
-//importing database file and executing it
 import { dbConnection } from './config/dbConnection.js';
-//importing routes 
-import userRoutes from './routes/userRoutes.js';
-//importing passport
 import connectPassport from "./utils/authProvider.js"
-// thid for session
 import session from 'express-session';
 import passport from 'passport';
-import cookieParser from 'cookie-parser';
-//importing error middlewar
+import bodyParser from "body-parser";
+import cors from 'cors'
 import { errorMiddleware } from './middleware/errorMiddleware.js';
+import userRoutes from './routes/userRoutes.js'; 
+import orderRoutes from './routes/orderRoutes.js'; 
 
 // configuring the dotenv environment here 
 dotenv.config();
@@ -24,6 +20,20 @@ connectPassport();
 
 
 const app = express();
+
+
+//using cookie parser
+//using express middlewares to accept json data in req.body/params
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+app.use(cors())
+
+// app.use(cookieParser())
+//using error middleware
+app.use(errorMiddleware);
+
+
+
 
 //using miidleware as session
 app.use(session({
@@ -37,21 +47,17 @@ app.use(passport.authenticate("session"));
 app.use(passport.initialize());
 app.use(passport.session());
 
-//using cookie parser
-app.use(cookieParser());
-//using express middlewares to accept json data in req.body/params
-app.use(express.json())
-app.use(express.urlencoded({extended: true}))
 
 
 
 
-app.use('/api/v1', userRoutes);
+
+// using routes
+app.use("/api/v1", userRoutes);
+app.use("/api/v1", orderRoutes);
 
 
 
-//using error middleware
-app.use(errorMiddleware);
 
 
 
