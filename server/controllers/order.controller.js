@@ -1,6 +1,7 @@
 import asyncHandler from "../services/asyncHandler.js";
 import orderModel from "../models/order.schema.js"
 import customError from "../utils/customError.js";
+import {instance} from "../server.js"
 // import { asyncError } from "../middleware/errorMiddleware.js";
 
 // mongoose.set("debug", true);
@@ -42,6 +43,49 @@ export const placeOrder = asyncHandler(async (req, res) => {
         sucess: true,
         message: `Order placed via cash on delivery`,
         newOrder,
+    });
+});
+
+// in this controller we are doing online payment using razorpay
+export const placeOrderOnline = asyncHandler(async (req, res) => {
+    // here we are collecting info from frontend that is send in 
+    // req.body object and mapping through destructuring (...Spread) in variable
+    const {
+        deliveryDetails,
+        orderItems,
+        paymentMethod,
+        itemsPrice,
+        taxPrice,
+        deliveryCharges,
+        totalAmout,
+    } = req.body;
+
+    // when we use passport we get user details in req.user
+    const user = "req.user._id";
+
+    // storing each variable in orderOptions and passing user
+    const orderOptions = {
+        deliveryDetails,
+        orderItems,
+        paymentMethod,
+        itemsPrice,
+        taxPrice,
+        deliveryCharges,
+        totalAmout,
+        user,
+    };
+    const options = {
+        amount : Number(totalAmout)*100,
+        currency:"INR",
+        receipt : "order_rcptid_11"
+    };
+   const order = await instance.orders.create(options);
+
+    
+    res.status(200).json({
+        sucess: true,
+        order,
+        orderOptions,
     });
 });
 

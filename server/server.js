@@ -1,5 +1,12 @@
 import app from "./app.js";
-const PORT = process.env.PORT || 4000
+const PORT = process.env.PORT || 4000;
+
+import Razorpay from 'razorpay';
+
+export const instance = new Razorpay({ 
+    key_id: process.env.RAZORPAY_API_KEY,
+    key_secret: process.env.RAZORPAY_API_SECRET 
+});
 
 
 
