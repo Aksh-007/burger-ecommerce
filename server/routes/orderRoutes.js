@@ -1,5 +1,5 @@
 import express from "express";
-import { getMyOrders, placeOrder, getOrderDetails, getAdminOrders } from "../controllers/order.controller.js";
+import { getMyOrders, placeOrder, getOrderDetails, getAdminOrders, processOrder } from "../controllers/order.controller.js";
 //importing to check if user is authenticate
 import { isAuthenticated } from "../middleware/authMiddleware.js";
 
@@ -14,10 +14,10 @@ router.get("/myorders",  isAuthenticated, getMyOrders);
 router.get("/order/:id",  isAuthenticated, getOrderDetails);
 
 // add admin middleware so that admin can access it
-router.get("/admin/:id",  isAuthenticated, getAdminOrders);
+router.get("/admin/orders",  isAuthenticated, getAdminOrders);
 
 
-router.get("/admin/:id",  isAuthenticated, getAdminOrders);
+router.get("/admin/order/:id",  isAuthenticated, processOrder);
 
 //create order route
 

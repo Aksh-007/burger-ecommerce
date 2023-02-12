@@ -20,4 +20,6 @@ export const isAuthenticated = (asyncHandler
             //if token present then pass to next middleware
             next();
         }
-    }))
+    }));
+
+    // export const isAuthorised 

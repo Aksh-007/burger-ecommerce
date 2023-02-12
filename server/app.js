@@ -29,9 +29,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(cors())
 
-// app.use(cookieParser())
-//using error middleware
-app.use(errorMiddleware);
+
 
 
 
@@ -48,27 +46,20 @@ app.use(passport.authenticate("session"));
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-
-
-
-
 // using routes
 app.use("/api/v1", userRoutes);
 app.use("/api/v1", orderRoutes);
 
 
-
-
-
+// app.use(cookieParser())
+//using error middleware
+app.use(errorMiddleware);
 
 
 // basic route to test
 app.get('/', (req, res) => {
     res.send(`<H1>App is working</H1>`);
 })
-
-
 
 
 export default app;

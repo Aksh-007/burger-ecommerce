@@ -1,10 +1,10 @@
 import asyncHandler from "../services/asyncHandler.js";
-import mongoose from "mongoose";
 import orderModel from "../models/order.schema.js"
 import customError from "../utils/customError.js";
+// import { asyncError } from "../middleware/errorMiddleware.js";
 
-mongoose.set("debug", true);
-mongoose.set("strictQuery", false);
+// mongoose.set("debug", true);
+// mongoose.set("strictQuery", false);
 
 // this controller is only for order on cash on delivery
 export const placeOrder = asyncHandler(async (req, res) => {
@@ -23,7 +23,7 @@ export const placeOrder = asyncHandler(async (req, res) => {
     // when we use passport we get user details in req.user
     const user = "req.user._id";
 
-    // storing each variable in orderOptions 
+    // storing each variable in orderOptions and passing user
     const orderOptions = {
         deliveryDetails,
         orderItems,
@@ -41,8 +41,7 @@ export const placeOrder = asyncHandler(async (req, res) => {
     res.status(200).json({
         sucess: true,
         message: `Order placed via cash on delivery`,
-        // orderOptions,
-        newOrder
+        newOrder,
     });
 });
 
@@ -69,6 +68,7 @@ export const getOrderDetails = asyncHandler(async (req, res, next) => {
   
     if (!order){
         return next(new customError("Invalid Order Id", 404));
+        // throw new customError("Invalid Order Id", 404);
     }
   
     res.status(200).json({
@@ -118,6 +118,7 @@ export const getOrderDetails = asyncHandler(async (req, res, next) => {
         order.orderStatus = "PickUp";
     }else if (order.orderStatus === "PickUp") {
         order.orderStatus = "Delivered";
+        // setting deliveredAt filed at date.now
         order.deliveredAt = new Date(Date.now());
     }else if(order.orderStatus === "Delivered"){
         return next (new customError("Food already Delivered", 400)); 
