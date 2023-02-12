@@ -4,7 +4,7 @@ import { dbConnection } from './config/dbConnection.js';
 import connectPassport from "./utils/authProvider.js"
 import session from 'express-session';
 import passport from 'passport';
-import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
 import cors from 'cors'
 import { errorMiddleware } from './middleware/errorMiddleware.js';
 import userRoutes from './routes/userRoutes.js'; 
@@ -24,6 +24,7 @@ const app = express();
 
 //using cookie parser
 //using express middlewares to accept json data in req.body/params
+app.use(cookieParser());
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(cors())
