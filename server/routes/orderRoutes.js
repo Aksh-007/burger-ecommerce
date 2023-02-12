@@ -5,7 +5,8 @@ import {
     getOrderDetails,
     getAdminOrders,
     processOrder,
-    placeOrderOnline
+    placeOrderOnline,
+    paymentVerification
 } from "../controllers/order.controller.js";
 //importing to check if user is authenticate
 import { isAuthenticated, authorisedAdmin } from "../middleware/authMiddleware.js";
@@ -13,10 +14,13 @@ import { isAuthenticated, authorisedAdmin } from "../middleware/authMiddleware.j
 
 const router = express.Router();
 
-router.post("/createorder", placeOrder);
+router.post("/createorder", isAuthenticated, placeOrder);
 
 //for order that are placed  online
-router.post("/createorderonline", placeOrderOnline)
+router.post("/createorderonline", isAuthenticated, placeOrderOnline);
+
+//for verifing online payment
+router.post("/paymentverification", isAuthenticated, paymentVerification);
 
 router.get("/myorders", isAuthenticated, getMyOrders);
 

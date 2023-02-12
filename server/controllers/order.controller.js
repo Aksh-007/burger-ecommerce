@@ -1,7 +1,9 @@
 import asyncHandler from "../services/asyncHandler.js";
 import orderModel from "../models/order.schema.js"
 import customError from "../utils/customError.js";
-import {instance} from "../server.js"
+import { instance } from "../server.js"
+import crypto from "crypto";
+import paymentModel from "../models/payment.schema.js";
 // import { asyncError } from "../middleware/errorMiddleware.js";
 
 // mongoose.set("debug", true);
@@ -22,7 +24,7 @@ export const placeOrder = asyncHandler(async (req, res) => {
     } = req.body;
 
     // when we use passport we get user details in req.user
-    const user = "req.user._id";
+    const user = req.user._id;
 
     // storing each variable in orderOptions and passing user
     const orderOptions = {
@@ -61,7 +63,7 @@ export const placeOrderOnline = asyncHandler(async (req, res) => {
     } = req.body;
 
     // when we use passport we get user details in req.user
-    const user = "req.user._id";
+    const user = req.user._id;
 
     // storing each variable in orderOptions and passing user
     const orderOptions = {
@@ -75,13 +77,13 @@ export const placeOrderOnline = asyncHandler(async (req, res) => {
         user,
     };
     const options = {
-        amount : Number(totalAmout)*100,
-        currency:"INR",
-        receipt : "order_rcptid_11"
+        amount: Number(totalAmout) * 100,
+        currency: "INR",
+        receipt: "order_rcptid_11"
     };
-   const order = await instance.orders.create(options);
+    const order = await instance.orders.create(options);
 
-    
+
     res.status(200).json({
         sucess: true,
         order,
@@ -89,6 +91,49 @@ export const placeOrderOnline = asyncHandler(async (req, res) => {
     });
 });
 
+
+// api to check payment verificaion
+export const paymentVerification = asyncHandler(async (req, res, next) => {
+
+    const { 
+        razorpay_payment_id,
+        razorpay_order_id,
+        razorpay_signature,
+        orderOptions
+    } = req.body;
+
+    const body = razorpay_payment_id + "|" + razorpay_order_id;
+
+    const expectedSignature = crypto
+    .createHmac("sha256", process.env.RAZORPAY_API_SECRET)
+    .update(body)
+    .digest("hex");
+
+    const isAuthentic = expectedSignature === razorpay_signature;
+
+    if (!isAuthentic) {
+        return next (new customError("Payment Failed", 400));
+    }else{
+        const payment = await paymentModel.create({
+            razorpay_order_id,
+            razorpay_payment_id,
+            razorpay_signature,
+        });
+
+        await orderModel.create({
+            ...orderOptions, 
+            user : "req.user._id",
+            paidAt: new Date(Date.now()),
+            paymentInfo:payment._id,
+        });
+
+        res.status(201).json({
+            success:true,
+            message:`Order place successfully payment id :${payment._id}`,
+        })
+    }
+
+})
 
 //here we are getting all order of specific user 
 export const getMyOrders = asyncHandler(async (req, res, next) => {
@@ -109,39 +154,39 @@ export const getMyOrders = asyncHandler(async (req, res, next) => {
 // here we are getting specific order of specific user 
 export const getOrderDetails = asyncHandler(async (req, res, next) => {
     const order = await orderModel.findById(req.params.id).populate("user", "name");
-  
-    if (!order){
+
+    if (!order) {
         return next(new customError("Invalid Order Id", 404));
         // throw new customError("Invalid Order Id", 404);
     }
-  
+
     res.status(200).json({
-      success: true,
-      order,
+        success: true,
+        order,
     });
-  });
+});
 
 
-  //here getting all the orders that avialable in databse
-  export const getAdminOrders = asyncHandler(async (req, res, next) =>{
+//here getting all the orders that avialable in databse
+export const getAdminOrders = asyncHandler(async (req, res, next) => {
 
     const order = await orderModel.find({}).populate("user", "name");
 
-    if (!order){
+    if (!order) {
         return next(new customError("No order found in database", 404));
     }
 
     res.status(200).json({
-        success:true,
-        message:`Order Retrived succesfully`,
+        success: true,
+        message: `Order Retrived succesfully`,
         order,
     })
-    
-  });
 
-  //in this controller the order is process like preparing to pickup anddelivered
-  export const processOrder = asyncHandler(async (req, res, next) =>{
-    
+});
+
+//in this controller the order is process like preparing to pickup anddelivered
+export const processOrder = asyncHandler(async (req, res, next) => {
+
     // order id coming in req.params
     const orderId = req.params.id
 
@@ -160,21 +205,21 @@ export const getOrderDetails = asyncHandler(async (req, res, next) => {
 
     if (order.orderStatus === "Preparing") {
         order.orderStatus = "PickUp";
-    }else if (order.orderStatus === "PickUp") {
+    } else if (order.orderStatus === "PickUp") {
         order.orderStatus = "Delivered";
         // setting deliveredAt filed at date.now
         order.deliveredAt = new Date(Date.now());
-    }else if(order.orderStatus === "Delivered"){
-        return next (new customError("Food already Delivered", 400)); 
+    } else if (order.orderStatus === "Delivered") {
+        return next(new customError("Food already Delivered", 400));
     }
 
     //at last save changes in database
     await order.save();
 
     res.status(200).json({
-        success:true,
+        success: true,
         message: `Order status updated succesfully`
 
     })
 
-  });
+});
