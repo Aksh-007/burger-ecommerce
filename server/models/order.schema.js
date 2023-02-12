@@ -68,7 +68,7 @@ export const orderSchema= new mongoose.Schema({
     // we are connecting user model id to order schema so that 
     // we can keep track of individual user orders
     user:{
-        type:mongoose.Schema.ObjectId,
+        type:mongoose.Schema.Types.ObjectId,
         ref:"User",
         required:true,
 
@@ -79,7 +79,7 @@ export const orderSchema= new mongoose.Schema({
         default:paymentModes.COD,
     },
     paymentInfo:{
-        type:mongoose.Schema.ObjectId,
+        type:mongoose.Schema.Types.ObjectId,
         ref:"Payment"
     },
     paidAt:Date,
