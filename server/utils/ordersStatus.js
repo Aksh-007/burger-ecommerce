@@ -2,7 +2,7 @@
 
 const orderStatus = {
     Preparing : "Preparing",
-    on_The_Way : "On the Way",
+    PickUp : "PickUp",
     Delivered : "Delivered",
 }
 
