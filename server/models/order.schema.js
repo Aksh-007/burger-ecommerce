@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
-import orderStatus from "../utils/ordersStatus";
+import orderStatus from "../utils/ordersStatus.js";
 //created enum for payment method 
-import paymentModes from "../utils/paymentModes";
+import paymentModes from "../utils/paymentModes.js";
 
 
-export const orderModel = new mongoose.Schema({
+export const orderSchema= new mongoose.Schema({
 
     // this is deliveryDetails object
     deliveryDetails :{
@@ -109,4 +109,4 @@ export const orderModel = new mongoose.Schema({
 
 },{timestamps:true});
 
-export default mongoose.model("Order", orderModel);
+export default mongoose.model("Order", orderSchema);

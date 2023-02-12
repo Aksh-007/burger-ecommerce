@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import authRoles from "../utils/authRoles.js";
 
-export const userModel = new mongoose.Schema({
+export const userSchema = new mongoose.Schema({
     name: {
         type: String
     },
@@ -22,4 +22,4 @@ export const userModel = new mongoose.Schema({
 }, { timestamps: true }
 );
 
-export default mongoose.model("User", userModel);
+export default mongoose.model("User", userSchema);

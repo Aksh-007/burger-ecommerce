@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const paymentModel = new mongoose.Schema({
+const paymentSchema = new mongoose.Schema({
     razorpay_order_id :{
         type:String,
         required:true
@@ -15,4 +15,4 @@ const paymentModel = new mongoose.Schema({
     },
 },{timestamps:true});
 
-export default mongoose.model("Payment", paymentModel)
+export default mongoose.model("Payment", paymentSchema)

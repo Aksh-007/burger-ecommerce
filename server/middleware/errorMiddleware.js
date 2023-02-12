@@ -7,3 +7,9 @@ export const errorMiddleware = (err, req, res, next) => {
       message: err.message,
     });
   };
+
+  // export const asyncError = (passedFunction) =>(req, res, next)=>
+  // {
+  //   Promise.resolve(passedFunction(req, res, next))
+  //   .catch(next);
+  // }
