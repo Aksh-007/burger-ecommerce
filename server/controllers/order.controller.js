@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 import orderModel from "../models/order.schema.js"
 import customError from "../utils/customError.js";
 
-// mongoose.set("debug", true);
-// mongoose.set("strictQuery", false);
+mongoose.set("debug", true);
+mongoose.set("strictQuery", false);
 
 // this controller is only for order on cash on delivery
 export const placeOrder = asyncHandler(async (req, res) => {
@@ -90,7 +90,46 @@ export const getOrderDetails = asyncHandler(async (req, res, next) => {
     res.status(200).json({
         success:true,
         message:`Order Retrived succesfully`,
-        order
+        order,
     })
     
+  });
+
+  //in this controller the order is process like preparing to pickup anddelivered
+  export const processOrder = asyncHandler(async (req, res, next) =>{
+    
+    // order id coming in req.params
+    const orderId = req.params.id
+
+    // if no id in req.params show validation error
+    if (!orderId) {
+        return next(new customError("Please Enter order id", 404));
+    }
+
+    //doing database opeartion quering to database
+    const order = await orderModel.findById(orderId);
+
+    // if no order exists then throw error
+    if (!order) {
+        return next(new customError("No order exists!!", 404));
+    }
+
+    if (order.orderStatus === "Preparing") {
+        order.orderStatus = "PickUp";
+    }else if (order.orderStatus === "PickUp") {
+        order.orderStatus = "Delivered";
+        order.deliveredAt = new Date(Date.now());
+    }else if(order.orderStatus === "Delivered"){
+        return next (new customError("Food already Delivered", 400)); 
+    }
+
+    //at last save changes in database
+    await order.save();
+
+    res.status(200).json({
+        success:true,
+        message: `Order status updated succesfully`
+
+    })
+
   });
