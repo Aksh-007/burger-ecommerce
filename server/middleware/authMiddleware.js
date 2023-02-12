@@ -22,4 +22,11 @@ export const isAuthenticated = (asyncHandler
         }
     }));
 
-    // export const isAuthorised 
+    export const authorisedAdmin = (asyncHandler(async(req, res, next) =>{
+        if (req.user.role !== "ADMIN") {
+            return next (new customError("Not Authorised to access this page",405))
+        }else{
+            next();
+        }
+
+    }));
