@@ -1,4 +1,4 @@
-// here we are crearing order status
+// here we are creating order status
 
 const orderStatus = {
     Preparing : "Preparing",
