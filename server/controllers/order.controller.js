@@ -4,6 +4,7 @@ import customError from "../utils/customError.js";
 import { instance } from "../server.js"
 import crypto from "crypto";
 import paymentModel from "../models/payment.schema.js";
+import mongoose from "mongoose";
 // import { asyncError } from "../middleware/errorMiddleware.js";
 
 mongoose.set("debug", true);
