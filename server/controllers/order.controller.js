@@ -167,7 +167,7 @@ export const getOrderDetails = asyncHandler(async (req, res, next) => {
 });
 
 
-//here getting all the orders that avialable in databse
+//here getting all the orders that avialable in databse if the user is admin
 export const getAdminOrders = asyncHandler(async (req, res, next) => {
 
     const order = await orderModel.find({}).populate("user", "name");
