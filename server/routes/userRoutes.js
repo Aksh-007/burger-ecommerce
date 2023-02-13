@@ -26,9 +26,13 @@ router.get("/googlelogin",
 // )
 
 //temproparly setting it but we have to authenticate it 
+// after authenticate from google redirect to this url{FRONTEND_URL}
 router.get("/login",
     //we have to authenticate it 
-    passport.authenticate("google"),
+    passport.authenticate("google",{
+                 scope:["profile"],
+                 successRedirect: process.env.FRONTEND_URL,
+             }),
     (req, res, next) => {
         res.send("logged in ")
     });
