@@ -7,8 +7,8 @@ import passport from 'passport';
 import cookieParser from "cookie-parser";
 import cors from 'cors'
 import { errorMiddleware } from './middleware/errorMiddleware.js';
-import userRoutes from './routes/userRoutes.js'; 
-import orderRoutes from './routes/orderRoutes.js'; 
+import userRoutes from './routes/userRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
 
 // configuring the dotenv environment here 
 dotenv.config();
@@ -25,9 +25,13 @@ const app = express();
 //using cookie parser
 //using express middlewares to accept json data in req.body/params
 app.use(cookieParser());
-app.use(express.json())
-app.use(express.urlencoded({extended: true}))
-app.use(cors())
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors({
+    Credential: true,
+    origin: process.env.FRONTEND_URL,
+    methods:["GET","POST", "PUT", "DELETE"]
+}));
 
 
 
@@ -36,9 +40,15 @@ app.use(cors())
 
 //using miidleware as session
 app.use(session({
-    secret:process.env.SESSION_SECRET,
-    resave:false,
-    saveUninitialized:false,
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+
+    cookie:{
+        secure:process.env.NODE_ENV === "development" ? false : true,
+        httpOnly:process.env.NODE_ENV === "development" ? false : true,
+        sameSite:process.env.NODE_ENV === "development" ? false : "none",
+    },
 }));
 
 //make sure you will call it after session
