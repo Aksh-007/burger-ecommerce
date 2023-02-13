@@ -26,7 +26,11 @@ export const logout = asyncHandler(async (req, res, next) =>{
             }else
             // if there is no error encounterd then delete the coolies 
             {
-                res.clearCookie("connect.sid");
+                res.clearCookie("connect.sid",{
+                    secure: process.env.NODE_ENV === "development" ? false : true,
+                    httpOnly: process.env.NODE_ENV === "development" ? false : true,
+                    sameSite: process.env.NODE_ENV === "development" ? false : true,
+                });
                 res.status(200).json({
                     success:true,
                     message:` logout succesfully`
