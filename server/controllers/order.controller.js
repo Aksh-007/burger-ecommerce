@@ -6,8 +6,8 @@ import crypto from "crypto";
 import paymentModel from "../models/payment.schema.js";
 // import { asyncError } from "../middleware/errorMiddleware.js";
 
-// mongoose.set("debug", true);
-// mongoose.set("strictQuery", false);
+mongoose.set("debug", true);
+mongoose.set("strictQuery", false);
 
 // this controller is only for order on cash on delivery
 export const placeOrder = asyncHandler(async (req, res) => {
