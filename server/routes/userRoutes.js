@@ -11,10 +11,10 @@ import { isAuthenticated, authorisedAdmin } from "../middleware/authMiddleware.j
 const router = express.Router();
 
 //here we are using passport to authenticate user using google auth
-router.get("/login",
-    passport.authenticate("google", {
-        scope: ["profile"],
-    })
+router.get("/googlelogin",
+passport.authenticate("google", {
+    scope: ["profile"],
+})
 );
 
 // after authenticate from google redirect to this url{FRONTEND_URL}
@@ -27,7 +27,7 @@ router.get("/login",
 
 //temproparly setting it but we have to authenticate it 
 // after authenticate from google redirect to this url{FRONTEND_URL}
-router.get("/googlelogin",
+router.get("/login",
     //we have to authenticate it 
     passport.authenticate("google",{
                 // scope means what information we want from google
