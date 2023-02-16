@@ -27,7 +27,7 @@ router.get("/googlelogin",
 
 //temproparly setting it but we have to authenticate it 
 // after authenticate from google redirect to this url{FRONTEND_URL}
-router.get("/googlelogin",
+router.get("/login",
     //we have to authenticate it 
     passport.authenticate("google",{
                 // scope means what information we want from google
