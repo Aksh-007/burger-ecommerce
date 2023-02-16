@@ -22,22 +22,6 @@ connectPassport();
 const app = express();
 
 
-//using cookie parser
-//using express middlewares to accept json data in req.body/params
-app.use(cookieParser());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cors({
-    Credential: true,
-    origin: process.env.FRONTEND_URL,
-    methods:["GET","POST", "PUT", "DELETE"]
-}));
-
-
-
-
-
-
 //using miidleware as session
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -51,6 +35,16 @@ app.use(session({
     },
 }));
 
+//using cookie parser
+//using express middlewares to accept json data in req.body/params
+app.use(cookieParser());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors({
+    Credential: true,
+    origin: process.env.FRONTEND_URL,
+    methods:["GET","POST", "PUT", "DELETE"]
+}));
 //make sure you will call it after session
 app.use(passport.authenticate("session"));
 app.use(passport.initialize());
