@@ -17,14 +17,6 @@ passport.authenticate("google", {
 })
 );
 
-// after authenticate from google redirect to this url{FRONTEND_URL}
-// router.get("/login",
-//     passport.authenticate('google',{
-//         scope:["profile"],
-//         successRedirect: process.env.FRONTEND_URL,
-//     })
-// )
-
 //temproparly setting it but we have to authenticate it 
 // after authenticate from google redirect to this url{FRONTEND_URL}
 router.get("/login",
