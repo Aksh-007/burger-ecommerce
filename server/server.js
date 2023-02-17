@@ -11,5 +11,5 @@ export const instance = new Razorpay({
 
 
 app.listen(PORT, (req, res)=>{
-    console.log(`App is listening on http://localhost:${PORT}/api/v1`)
+    console.log(`App is listening on http://localhost:${PORT}/api/v1 and working on ${process.env.NODE_ENV}`);
 });

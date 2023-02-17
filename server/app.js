@@ -29,13 +29,13 @@ app.use(session({
     saveUninitialized: false,
 
     cookie:{
-        // secure:process.env.NODE_ENV === "development" ? false : true,
-        // httpOnly:process.env.NODE_ENV === "development" ? false : true,
-        // sameSite:process.env.NODE_ENV === "development" ? false : "none",
+        secure:process.env.NODE_ENV === "development" ? false : true,
+        httpOnly:process.env.NODE_ENV === "development" ? false : true,
+        sameSite:process.env.NODE_ENV === "development" ? false : "none",
 
-        httpOnly: true,
-        sameSite: 'none',
-        secure: true,
+        // httpOnly: true,
+        // secure: true,
+        // sameSite: 'none',
     },
 }));
 
@@ -53,6 +53,8 @@ app.use(cors({
 app.use(passport.authenticate("session"));
 app.use(passport.initialize());
 app.use(passport.session());
+// 
+app.enable("trust proxy");
 
 // using routes
 app.use("/api/v1", userRoutes);
