@@ -33,6 +33,7 @@ app.use(session({
         httpOnly:process.env.NODE_ENV === "development" ? false : true,
         sameSite:process.env.NODE_ENV === "development" ? false : "none",
 
+        // if not in development mode sed this
         // httpOnly: true,
         // secure: true,
         // sameSite: 'none',
@@ -53,7 +54,7 @@ app.use(cors({
 app.use(passport.authenticate("session"));
 app.use(passport.initialize());
 app.use(passport.session());
-// 
+// note - please add this otherwise cookies will not store in browser in production 
 app.enable("trust proxy");
 
 // using routes
