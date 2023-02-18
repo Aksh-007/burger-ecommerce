@@ -1,0 +1,19 @@
+import {createReducer} from "@reduxjs/toolkit";
+
+
+export const authReducer = createReducer({},{
+    loadUserRequest:  (state) =>{
+        state.loading = true;
+    },
+    loadUserSuccess:  (state) =>{
+        state.loading = false;
+        state.isAuthenticated = true;
+        state.user = action.payload;
+    },
+    loadUserFail:  (state) =>{
+        state.loading = false;
+        state.isAuthenticated = fale;
+        state.user = action.payload;
+    },
+    
+})
