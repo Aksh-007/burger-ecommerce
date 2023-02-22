@@ -21,11 +21,12 @@ const About = () => {
         </article>
 
         <div>
-          <h2>Founder</h2>
+          
           <article>
             <div>
               <img src={my} alt="Founder" />
-              <h3>{founderName}</h3>
+              <h2>{founderName}</h2>
+              <h3>Founder</h3>
             </div>
             <p>
               Our Burger website was founded by {founderName}, a food
