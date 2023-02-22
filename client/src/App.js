@@ -10,7 +10,7 @@ import Checkout from "./components/cart/Checkout.jsx";
 import ConfirmOrder from "./components/cart/ConfirmOrder.jsx";
 import ErrorHandler from "./components/errorPages/ErrorHandler.jsx";
 import PaymentSucceed from "./components/cart/PaymentSucceed.jsx";
-import Login from "./login/Login.jsx";
+import Login from "./components/login/Login.jsx"
 import Profile from "./components/profile/Profile.jsx";
 import MyOrders from "./components/order/MyOrders";
 import OrderDetails from "./components/order/OrderDetails";
