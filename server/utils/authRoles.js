@@ -1,4 +1,4 @@
-// auth roles 
+// auth roles enumerables
 
 const authRoles = {
     ADMIN :"ADMIN",
