@@ -1,4 +1,4 @@
-// here we are creating order status
+// here we are creating order status enumerable
 
 const orderStatus = {
     Preparing : "Preparing",
