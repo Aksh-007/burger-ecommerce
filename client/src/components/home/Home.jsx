@@ -32,7 +32,7 @@ const Home = () => {
             Treat yourself with tasty and Authentic Burger{" "}
           </motion.p>
           <motion.p {...options} transition={{ delay: 0.2 }}>
-            only in BURGERWALA!!!
+            only in BURGER JOINT!!!
           </motion.p>
         </div>
         <a href="#menu">ORDER NOW !!! </a>

@@ -15,7 +15,7 @@ const Header = ({isAuthenticated = false}) => {
       whileInView={{x:10}}
       >
         <IoFastFoodOutline/>
-        {/* <p>BURGERWALA</p> */}
+        {/* <p>BURGER JOINT</p> */}
       </motion.div>
       <div>
         {/* basicaly this is a anchor tag */}
