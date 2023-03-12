@@ -26,7 +26,7 @@ const Home = () => {
             // transition={{ duration: 0.5 }}
             {...options}
           >
-            Nagpur Burgerwala
+            Burger Joint
           </motion.h1>
           <motion.p {...options}>
             Treat yourself with tasty and Authentic Burger{" "}

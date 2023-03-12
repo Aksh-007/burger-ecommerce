@@ -1,1 +1,1 @@
-# NAGPUR BURGERWALA website for online burger order
+# Burger Joint website for online burger order
