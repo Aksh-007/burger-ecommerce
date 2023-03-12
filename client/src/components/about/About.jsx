@@ -11,7 +11,7 @@ const About = () => {
         <h1>About Us</h1>
 
         <article>
-          <h4>Nagpur Burgerwala</h4>
+          <h4>Burger Joint</h4>
           <p>"Savor the flavor in every bite." <br/>
           Explore the various type of Burgers<br/>
           Click below to Explore the Menu</p>
