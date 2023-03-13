@@ -15,7 +15,7 @@ const Checkout = () => {
             <input type="text" placeholder='Enter Your House No.'/>
         </div>
         <div>
-          <label>LandeMark </label>
+          <label>LandMark </label>
             <input type="text" placeholder='Enter Your LandMark'/>
         </div>
         <div>
